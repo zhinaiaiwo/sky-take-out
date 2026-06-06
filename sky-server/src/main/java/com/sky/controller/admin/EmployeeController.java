@@ -93,6 +93,19 @@ public class EmployeeController {
         return Result.success(pageResult);
     }
 
+    /**
+     * 员工禁用和启用
+     * @param status
+     * @param id
+     * @return
+     */
+    @PostMapping("/status/{status}")
+    @ApiOperation("员工禁用和启用")
+    public Result<Void> StartOrStop(@PathVariable/*("status") 这个和上面的 {} 里面的一样可不写，不一样要写*/ Integer status, Long id) {
+        log.info("员工禁用和启用: {}, {}", status, id);
+        employeeService.StartOrStop(status, id);
+        return Result.success();
+    }
 
 
 
